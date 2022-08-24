@@ -7,6 +7,7 @@
         dispatch('add_list', {
             text: input_val
         });
+        input_val = '';
     }
 </script>
 
