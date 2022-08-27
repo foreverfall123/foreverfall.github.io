@@ -4,7 +4,7 @@
     export let item;
     let style = '';
 
-    $: style = item.isComplete ? 'text-decoration: line-through' : '';
+    $: style = item.isComplete ? 'text-decoration: line-through; color:rgb(167, 166, 166);' : '';
 
     function delete_item(){
         console.log(item.id);
@@ -12,10 +12,33 @@
             id: item.id
         });
     }
+
+    function span_click(){
+        item.isComplete = !item.isComplete;
+    }
 </script>
 
-<div>
-    <input type="checkbox" bind:checked="{item.isComplete}">
-    <span {style}>{item.id} {item.text}</span>
+<div class='item_div'>
+    <span on:click={span_click}>
+        <input type="checkbox" bind:checked="{item.isComplete}">
+        <span {style}>{item.text}</span>
+    </span>
     <button on:click={delete_item}>x</button>
 </div>
+
+<style>
+    .item_div{
+        display: flex;
+        justify-content: space-between;
+        font-size: 25px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .item_div button{
+        border: none;
+        background-color: white;
+        margin: 0px;
+        padding: 0px;
+    }
+</style>
