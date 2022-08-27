@@ -1,14 +1,18 @@
 <script>
-import { escape } from 'svelte/internal';
 import { onMount } from 'svelte';
 
 	import Input from './Input.svelte';
 	import List from './List.svelte';
 
 	let todo_list = [];
+	let input_this;
 
-	// onMount(() => {todo_list = loadlistbycookie(); console.log(todo_list)});
+	onMount(() => {
+		todo_list = loadlistbycookie();
+		input_this.focus();
+	});
 
+	// 해당 조건을 걸 경우 쿠키를 불러오기 전에 빈값으로 저장해버려서 불러오기 안댐
 	// $: savelistbycookie(todo_list);
 
 	function add_list(event) {
@@ -28,6 +32,10 @@ import { onMount } from 'svelte';
 			isComplete: false,
 		};
 		todo_list[todo_list.length] = new_item;
+
+		savelistbycookie(todo_list);
+
+		input_this.focus();
 	}
 
 	function delete_item(event){
@@ -36,27 +44,29 @@ import { onMount } from 'svelte';
 
 		todo_list = todo_list.filter((item) => item.id != event.detail.id);
 
-		Input.fucus_input();
+		savelistbycookie(todo_list);
+
+		input_this.focus();
 	}
 
-	// function savelistbycookie(value){
-	// 	console.log(value);
-	// 	let todayDate = new Date();
-	// 	todayDate.setDate(todayDate.getDate() + 30);
+	function savelistbycookie(value){
+		console.log(JSON.stringify(value));
+		let todayDate = new Date();
+		todayDate.setDate(todayDate.getDate() + 30);
 		
-	// 	document.cookie = 'sym_todolist=' + value + '; path=/; expires=' + todayDate.toGMTString() + ';';
-	// }
+		document.cookie = 'sym_todolist=' + JSON.stringify(value) + '; path=/; expires=' + todayDate.toGMTString() + ';';
+	}
 
-	// function loadlistbycookie(){
-	// 	return new RegExp('sym_todolist' + '=([^;]*)').test(document.cookie) ? RegExp.$1 : [] ;
-	// }
+	function loadlistbycookie(){
+		return new RegExp('sym_todolist' + '=([^;]*)').test(document.cookie) ? JSON.parse(RegExp.$1) : [] ;
+	}
 </script>
 
 <main>
 	<div class='wrapper'>
 		<div class='container'>
 			<h1>To Do List</h1>
-			<Input on:add_list={add_list} />
+			<Input on:add_list={add_list} bind:input_this={input_this}/>
 			<List {todo_list} on:delete_item={delete_item}/>
 		</div>
 	</div>
@@ -82,10 +92,4 @@ import { onMount } from 'svelte';
 	h1{
 		font-size: 45px;
 	}
-
-	/* main :global() {
-		background-image: url('/src/background.jpg');
-		background-repeat: no-repeat;
-		background-size: cover;
-	} */
 </style>

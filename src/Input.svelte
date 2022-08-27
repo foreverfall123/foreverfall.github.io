@@ -1,27 +1,19 @@
 <script>
     import { createEventDispatcher } from 'svelte';
-    import { onMount } from 'svelte';
     const dispatch = createEventDispatcher();
+    export let input_this;
     let input_val = '';
-    let input_this;
 
     function add_list(){
         dispatch('add_list', {
             text: input_val
         });
         input_val = '';
-        focus_input();
     }
 
     function keydown_event(event){
         if(event.keyCode === 13) add_list();
     }
-
-    function focus_input(){
-        input_this.focus();
-    }
-
-    onMount(() => input_this.focus());
 </script>
 
 <div class='input_div'>

@@ -27,5 +27,7 @@
         border-radius: 25px;
 		box-shadow: 0px 0px 10px 5px rgb(233, 233, 233);
         padding: 20px;
+        max-height: 500px;
+        overflow: auto;
     }
 </style>
