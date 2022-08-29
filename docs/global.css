@@ -5,7 +5,7 @@ html, body {
 }
 
 body {
-	background-color: aquamarine;
+	background-color: rgb(163,204,163);
 	margin: 0;
 	padding: 8px;
 	box-sizing: border-box;

@@ -73,11 +73,15 @@ import { onMount } from 'svelte';
 </main>
 
 <style>
+	main{
+		height: 100%;
+	}
+
 	.wrapper{
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		min-height: 100vh;
+		height: 100%;
 	}
 
 	.container{
@@ -86,7 +90,6 @@ import { onMount } from 'svelte';
 		background-color: white;
 		border-radius: 25px;
 		box-shadow: -10px -10px 10px rgb(233, 233, 233) inset;
-
 	}
 
 	h1{

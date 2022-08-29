@@ -24,9 +24,9 @@
 <style>
     .list_div{
         margin-top: 20px;
-        border-radius: 25px;
+        border-radius: 15px;
 		box-shadow: 0px 0px 10px 5px rgb(233, 233, 233);
-        padding: 20px;
+        padding: 10px 20px;
         max-height: 500px;
         overflow: auto;
     }

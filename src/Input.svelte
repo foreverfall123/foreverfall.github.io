@@ -32,6 +32,7 @@
 		box-shadow: 0px 0px 10px 5px rgb(233, 233, 233);
         border: none;
         margin-right: 10px;
+        font-size: 20px;
     }
 
     .input_div input::placeholder{
@@ -45,5 +46,6 @@
         border-radius: 25px;
 		box-shadow: 10px 10px 10px rgb(233, 233, 233);
         border: none;
+        cursor: pointer;
     }
 </style>
