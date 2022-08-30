@@ -5,7 +5,9 @@ html, body {
 }
 
 body {
-	background-color: rgb(163,204,163);
+	background-image: url('/background.png');
+	background-repeat: no-repeat;
+	background-size: cover;
 	margin: 0;
 	padding: 8px;
 	box-sizing: border-box;
