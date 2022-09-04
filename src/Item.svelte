@@ -41,15 +41,21 @@
         margin: 0px;
         padding: 0px;
         cursor: pointer;
+        color: red;
     }
 
     .item_div span {
         text-align: center;
+        white-space: nowrap;
     }
 
     .item_div input[type=checkbox]{
         zoom: 1.5;
         vertical-align: middle;
         margin: -4px 0 0 0;
+    }
+
+    .item_div span span{
+        margin-right: 5px;
     }
 </style>
