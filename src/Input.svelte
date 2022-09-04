@@ -11,6 +11,10 @@
         input_val = '';
     }
 
+    function clear_list(){
+        dispatch('clear_list', {});
+    }
+
     function keydown_event(event){
         if(event.keyCode === 13) add_list();
     }
@@ -19,6 +23,7 @@
 <div class='input_div'>
     <input type="text" placeholder="할 일을 입력해주세요" bind:value={input_val} on:keydown={keydown_event} bind:this={input_this}/>
     <button on:click={add_list}>ADD</button>
+    <button on:click={clear_list}>CLEAR</button>
 </div>
 
 <style>
@@ -31,7 +36,6 @@
         border-radius: 25px;
 		box-shadow: 0px 0px 10px 5px rgb(233, 233, 233);
         border: none;
-        margin-right: 10px;
         font-size: 20px;
     }
 
@@ -47,5 +51,6 @@
 		box-shadow: 10px 10px 10px rgb(233, 233, 233);
         border: none;
         cursor: pointer;
+        margin-left: 5px;
     }
 </style>

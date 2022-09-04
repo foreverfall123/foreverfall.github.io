@@ -49,6 +49,17 @@ import { onMount } from 'svelte';
 		input_this.focus();
 	}
 
+	function clear_item(event){
+
+		alert('완료된 \'' + todo_list.filter((item) => item.isComplete === true).length + '\'개의 일이 삭제되었습니다.');
+
+		todo_list = todo_list.filter((item) => item.isComplete === false);
+
+		savelistbycookie(todo_list);
+
+		input_this.focus();
+	}
+
 	function savelistbycookie(value){
 		console.log(JSON.stringify(value));
 		let todayDate = new Date();
@@ -66,7 +77,7 @@ import { onMount } from 'svelte';
 	<div class='wrapper'>
 		<div class='container'>
 			<h1>To Do List</h1>
-			<Input on:add_list={add_list} bind:input_this={input_this}/>
+			<Input on:add_list={add_list} on:clear_list={clear_item} bind:input_this={input_this}/>
 			<List {todo_list} on:delete_item={delete_item}/>
 		</div>
 	</div>
