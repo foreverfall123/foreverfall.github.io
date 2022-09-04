@@ -28,6 +28,7 @@
 		box-shadow: 0px 0px 10px 5px rgb(233, 233, 233);
         padding: 10px 20px;
         max-height: 500px;
-        overflow: auto;
+        max-width: 300px;
+        overflow-y: auto;
     }
 </style>

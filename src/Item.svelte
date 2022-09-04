@@ -19,10 +19,8 @@
 </script>
 
 <div class='item_div'>
-    <span on:click={span_click}>
-        <input type="checkbox" bind:checked="{item.isComplete}">
-        <span {style}>{item.text}</span>
-    </span>
+    <input type="checkbox" bind:checked="{item.isComplete}">
+    <span on:click={span_click} {style}>{item.text}</span>
     <button on:click={delete_item}>x</button>
 </div>
 
@@ -42,20 +40,20 @@
         padding: 0px;
         cursor: pointer;
         color: red;
+        padding: 5px;
+        margin: -4px 0 0 0;
     }
 
-    .item_div span {
-        text-align: center;
-        white-space: nowrap;
+    .item_div > span {
+        width: 100%;
+        padding: 0 10px;
+        word-break: break-all;
+        text-align: left;
     }
 
     .item_div input[type=checkbox]{
         zoom: 1.5;
         vertical-align: middle;
         margin: -4px 0 0 0;
-    }
-
-    .item_div span span{
-        margin-right: 5px;
     }
 </style>
