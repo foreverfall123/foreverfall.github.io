@@ -49,9 +49,16 @@ import { onMount } from 'svelte';
 		input_this.focus();
 	}
 
-	function clear_item(event){
+	function clear_item(){
 
-		alert('완료된 \'' + todo_list.filter((item) => item.isComplete === true).length + '\'개의 일이 삭제되었습니다.');
+		let count = todo_list.filter((item) => item.isComplete === true).length;
+
+		if(count === 0) {
+			alert('삭제할 완료된 일이 존재하지 않습니다.');
+			return false;
+		}
+
+		alert('완료된 \'' + count + '\'개의 일이 삭제되었습니다.');
 
 		todo_list = todo_list.filter((item) => item.isComplete === false);
 
@@ -61,7 +68,6 @@ import { onMount } from 'svelte';
 	}
 
 	function savelistbycookie(value){
-		console.log(JSON.stringify(value));
 		let todayDate = new Date();
 		todayDate.setDate(todayDate.getDate() + 30);
 		
